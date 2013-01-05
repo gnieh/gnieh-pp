@@ -62,7 +62,7 @@ sealed trait Doc {
   def \\::(that: Doc): Doc =
     withUnit(_ :: softbreak :: this)(that)
 
-  /** Equivalent to `align(this <:> that)` */
+  /** Equivalent to `align(this #:: that)` */
   @scala.inline
   def $$(that: Doc) =
     align(this #:: that)
