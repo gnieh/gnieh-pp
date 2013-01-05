@@ -34,38 +34,38 @@ sealed trait Doc {
    *  Is left associative with [[gnieh.pp.empty]] as left and right unit.
    */
   @scala.inline
-  def <>(that: Doc): Doc =
-    withUnit(ConsPp(this, _))(that)
+  def ::(that: Doc): Doc =
+    withUnit(ConsPp(_, this))(that)
 
-  /** Equivalent to `this <> space <> that` */
+  /** Equivalent to `that :: space :: this` */
   @scala.inline
-  def <+>(that: Doc): Doc =
-    withUnit(this <> space <> _)(that)
+  def +::(that: Doc): Doc =
+    withUnit(_ :: space :: this)(that)
 
-  /** Equivalent to `this <> line <> that` */
+  /** Equivalent to `that :: line :: this` */
   @scala.inline
-  def <:>(that: Doc): Doc =
-    withUnit(this <> line <> _)(that)
+  def #::(that: Doc): Doc =
+    withUnit(_ :: line :: this)(that)
 
-  /** Equivalent to `this <> softline <> that` */
+  /** Equivalent to `that :: softline :: this` */
   @scala.inline
-  def <\>(that: Doc): Doc =
-    withUnit(this <> softline <> _)(that)
+  def \::(that: Doc): Doc =
+    withUnit(_ :: softline :: this)(that)
 
-  /** Equivalent to `this <> linebreak <> that` */
+  /** Equivalent to `that :: linebreak :: this` */
   @scala.inline
-  def <::>(that: Doc): Doc =
-    withUnit(this <> linebreak <> _)(that)
+  def ##::(that: Doc): Doc =
+    withUnit(_ :: linebreak :: this)(that)
 
-  /** Equivalent to `this <> softbreak <> that` */
+  /** Equivalent to `that :: softbreak :: this` */
   @scala.inline
-  def <\\>(that: Doc): Doc =
-    withUnit(this <> softbreak <> _)(that)
+  def \\::(that: Doc): Doc =
+    withUnit(_ :: softbreak :: this)(that)
 
   /** Equivalent to `align(this <:> that)` */
   @scala.inline
   def $$(that: Doc) =
-    align(this <:> that)
+    align(this #:: that)
 
   private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean): String
 
@@ -97,12 +97,10 @@ private[pp] final case class TextDoc(text: String) extends Doc {
 
 private[pp] final case class LineDoc(break: Boolean) extends Doc {
   private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    if (inGroup && col < width) {
-      if (break) {
-        ""
-      } else {
-        " "
-      }
+    if (inGroup && break && col < width) {
+      ""
+    } else if (inGroup && !break && col + 1 < width) {
+      " "
     } else {
       "\n"
     }
@@ -110,14 +108,19 @@ private[pp] final case class LineDoc(break: Boolean) extends Doc {
 
 private[pp] final case class ConsPp(first: Doc, second: Doc) extends Doc {
   private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) = {
-    val firstRendered = first.render(width, indent, col, inGroup, newLine)
+    val firstRendered = first.render(width, indent, if (newLine) 0 else col, inGroup, newLine)
     val firstSize = firstRendered.length
-    val secondRendered = second.render(width, indent, firstSize, inGroup, firstRendered.endsWith("\n"))
+    val secondRendered =
+      second.render(width,
+        indent,
+        if (firstRendered.endsWith("\n")) 0 else (col + firstSize),
+        inGroup,
+        firstRendered.endsWith("\n"))
     if (inGroup) {
       if (secondRendered.length + firstSize <= width) {
         firstRendered + secondRendered
       } else {
-        render(width, indent, 0, false, newLine)
+        render(width, indent, col, false, newLine)
       }
     } else {
       firstRendered + secondRendered

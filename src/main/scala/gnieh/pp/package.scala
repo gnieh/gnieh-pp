@@ -70,11 +70,11 @@ package object pp {
 
   /** Concatenates all characters, using [[gnieh.pp.line]] for new lines and [gnieh.pp.char]] for other characters */
   def string(s: String): Doc =
-    s.foldLeft(empty) { (acc, c) =>
+    s.foldRight(empty) { (c, acc) =>
       if (c == '\n')
-        acc <> line
+        line :: acc
       else
-        acc <> char(c)
+        char(c) :: acc
     }
 
   /** Splits the string into words and create a document for each word */
@@ -102,9 +102,11 @@ package object pp {
     TextDoc(d.toString)
 
   /** Discards all line breaks in the given document if the result fits in the page, otherwise, renders without any changes */
-  @scala.inline
   def group(doc: Doc): Doc =
-    GroupDoc(doc)
+    if (doc == empty)
+      empty
+    else
+      GroupDoc(doc)
 
   /** Renders the document as usual, and then fills until `width` with spaces if necessary */
   @scala.inline
@@ -113,15 +115,15 @@ package object pp {
 
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <+> _)
+    docs.foldRight(empty)(_ +:: _)
 
   @scala.inline
   def vsep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <:> _)
+    docs.foldRight(empty)(_ #:: _)
 
   @scala.inline
   def fillSep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <\> _)
+    docs.foldRight(empty)(_ \:: _)
 
   @scala.inline
   def sep(docs: TraversableLike[Doc, _]): Doc =
@@ -129,15 +131,15 @@ package object pp {
 
   @scala.inline
   def hcat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <> _)
+    docs.foldRight(empty)(_ :: _)
 
   @scala.inline
   def vcat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <::> _)
+    docs.foldRight(empty)(_ ##:: _)
 
   @scala.inline
   def fillCat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldLeft(empty)(_ <\\> _)
+    docs.foldRight(empty)(_ \\:: _)
 
   @scala.inline
   def cat(docs: TraversableLike[Doc, _]): Doc =

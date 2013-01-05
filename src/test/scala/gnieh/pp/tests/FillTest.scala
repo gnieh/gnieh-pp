@@ -31,7 +31,7 @@ class FillTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "be filled even if there was indentation" in {
-    nest(3)("test" <:> fill(20)(doc)).render(80) should be("test\n   some document       ")
+    nest(3)("test" #:: fill(20)(doc)).render(80) should be("test\n   some document       ")
   }
 
 }
