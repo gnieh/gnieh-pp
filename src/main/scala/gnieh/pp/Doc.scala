@@ -131,3 +131,14 @@ private[pp] final case class AlignDoc(inner: Doc) extends Doc {
     inner.render(width, col, col, inGroup, newLine)
   }
 }
+
+private[pp] final case class FillDoc(width: Int, inner: Doc) extends Doc {
+  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) = {
+    val rendered = inner.render(width, indent, col, inGroup, newLine)
+    val spaces = if (newLine)
+      this.width + indent - rendered.length
+    else
+      this.width - rendered.length
+    rendered + (" " * spaces)
+  }
+}

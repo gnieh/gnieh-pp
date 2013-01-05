@@ -106,6 +106,11 @@ package object pp {
   def group(doc: Doc): Doc =
     GroupDoc(doc)
 
+  /** Renders the document as usual, and then fills until `width` with spaces if necessary */
+  @scala.inline
+  def fill(width: Int)(doc: Doc): Doc =
+    FillDoc(width, doc)
+
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldLeft(empty)(_ <+> _)
