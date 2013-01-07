@@ -25,12 +25,14 @@ class ListCombinatorsTest extends FlatSpec with ShouldMatchers {
 
   val someText = words("text to lay out")
 
+  val render = (new PrettyRenderer(80)).andThen(_.layout)
+
   "vsep" should "vertically lay out documents" in {
     val test1 = "some" :+: vsep(someText)
-    test1.render(80) should be("some text\nto\nlay\nout")
+    render(test1) should be("some text\nto\nlay\nout")
 
     val test2 = "some" :+: align(vsep(someText))
-    test2.render(80) should be("some text\n     to\n     lay\n     out")
+    render(test2) should be("some text\n     to\n     lay\n     out")
   }
 
 }

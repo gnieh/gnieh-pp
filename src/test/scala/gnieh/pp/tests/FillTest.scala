@@ -22,16 +22,18 @@ class FillTest extends FlatSpec with ShouldMatchers {
 
   val doc = string("some document")
 
+  val render = (new PrettyRenderer(80)).andThen(_.layout)
+
   "a rendered document" should "be filled until filling width is reached" in {
-    fill(20)(doc).render(80) should be("some document       ")
+    render(fill(20)(doc)) should be("some document       ")
   }
 
   it should "not be filled if the width was already reached" in {
-    fill(5)(doc).render(80) should be("some document")
+    render(fill(5)(doc)) should be("some document")
   }
 
   it should "be filled even if there was indentation" in {
-    nest(3)("test" :|: fill(20)(doc)).render(80) should be("test\n   some document       ")
+    render(nest(3)("test" :|: fill(20)(doc))) should be("test\n   some document       ")
   }
 
 }

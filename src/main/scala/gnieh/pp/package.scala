@@ -23,7 +23,7 @@ package object pp {
   /** Indents the document */
   @scala.inline
   def nest(indent: Int)(inner: Doc): Doc =
-    NestedDoc(indent, inner)
+    NestDoc(indent, inner)
 
   /** Renders as a space */
   @scala.inline
@@ -107,11 +107,9 @@ package object pp {
     TextDoc(d.toString)
 
   /** Discards all line breaks in the given document if the result fits in the page, otherwise, renders without any changes */
+  @scala.inline
   def group(doc: Doc): Doc =
-    if (doc == empty)
-      empty
-    else
-      GroupDoc(doc)
+    UnionDoc(doc.flatten, doc)
 
   /** Renders the document as usual, and then fills until `width` with spaces if necessary */
   @scala.inline
@@ -140,11 +138,11 @@ package object pp {
 
   @scala.inline
   def vcat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ :|: _)
+    docs.foldRight(empty)(_ :||: _)
 
   @scala.inline
   def fillCat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ :\: _)
+    docs.foldRight(empty)(_ :\\: _)
 
   @scala.inline
   def cat(docs: TraversableLike[Doc, _]): Doc =
@@ -210,5 +208,7 @@ package object pp {
     case Some(d) => d
     case None    => empty
   }
+
+  type Docs = List[(Int, Doc)]
 
 }

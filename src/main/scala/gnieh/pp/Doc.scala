@@ -35,7 +35,7 @@ sealed trait Doc {
    */
   @scala.inline
   def ::(that: Doc): Doc =
-    withUnit(ConsPp(_, this))(that)
+    withUnit(ConsDoc(_, this))(that)
 
   /** Equivalent to `that :: space :: this` */
   @scala.inline
@@ -62,86 +62,57 @@ sealed trait Doc {
   def :\\:(that: Doc): Doc =
     withUnit(_ :: softbreak :: this)(that)
 
-  /** Equivalent to `align(this <:>: that)` */
+  /** Equivalent to `align(this :|: that)` */
   @scala.inline
   def $$(that: Doc) =
     align(this :|: that)
 
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean): String
+  // internal stuffs used by the pretty printer algorithm
 
-  /** Renders the document on the given width */
-  def render(width: Int): String = render(width, 0, 0, false, false)
+  val flatten: Doc
 
 }
 
-private[pp] final case class NestedDoc(indent: Int, inner: Doc) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    inner.render(width, indent + this.indent, col, inGroup, newLine)
+final case class NestDoc(indent: Int, inner: Doc) extends Doc {
+  lazy val flatten =
+    NestDoc(indent, inner.flatten)
 }
 
-private[pp] final case class GroupDoc(inner: Doc) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    inner.render(width, indent, col, true, newLine)
+final case class UnionDoc(long: Doc, short: Doc) extends Doc {
+  val flatten =
+    long.flatten
 }
 
-private[pp] case object EmptyDoc extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    ""
+case object EmptyDoc extends Doc {
+  val flatten =
+    this
 }
 
-private[pp] final case class TextDoc(text: String) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    if (newLine) (" " * indent) + text
-    else text
+final case class TextDoc(text: String) extends Doc {
+  val flatten =
+    this
 }
 
-private[pp] final case class LineDoc(break: Boolean) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) =
-    if (inGroup && break && col < width) {
-      ""
-    } else if (inGroup && !break && col + 1 < width) {
-      " "
+final case class LineDoc(break: Boolean) extends Doc {
+  lazy val flatten =
+    if (break) {
+      TextDoc("")
     } else {
-      "\n"
+      TextDoc(" ")
     }
 }
 
-private[pp] final case class ConsPp(first: Doc, second: Doc) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) = {
-    val firstRendered = first.render(width, indent, if (newLine) 0 else col, inGroup, newLine)
-    val firstSize = firstRendered.length
-    val secondRendered =
-      second.render(width,
-        indent,
-        if (firstRendered.endsWith("\n")) 0 else (col + firstSize),
-        inGroup,
-        firstRendered.endsWith("\n"))
-    if (inGroup) {
-      if (secondRendered.length + firstSize <= width) {
-        firstRendered + secondRendered
-      } else {
-        render(width, indent, col, false, newLine)
-      }
-    } else {
-      firstRendered + secondRendered
-    }
-
-  }
+final case class ConsDoc(first: Doc, second: Doc) extends Doc {
+  lazy val flatten =
+    ConsDoc(first.flatten, second.flatten)
 }
 
-private[pp] final case class AlignDoc(inner: Doc) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) = {
-    inner.render(width, col, col, inGroup, newLine)
-  }
+final case class AlignDoc(inner: Doc) extends Doc {
+  lazy val flatten =
+    AlignDoc(inner.flatten)
 }
 
-private[pp] final case class FillDoc(width: Int, inner: Doc) extends Doc {
-  private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean) = {
-    val rendered = inner.render(width, indent, col, inGroup, newLine)
-    val spaces = if (newLine)
-      this.width + indent - rendered.length
-    else
-      this.width - rendered.length
-    rendered + (" " * spaces)
-  }
+final case class FillDoc(width: Int, inner: Doc) extends Doc {
+  lazy val flatten =
+    FillDoc(width, inner.flatten)
 }
