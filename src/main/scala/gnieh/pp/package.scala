@@ -115,15 +115,15 @@ package object pp {
 
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ +:: _)
+    docs.foldRight(empty)(_ :+: _)
 
   @scala.inline
   def vsep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ #:: _)
+    docs.foldRight(empty)(_ :|: _)
 
   @scala.inline
   def fillSep(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ \:: _)
+    docs.foldRight(empty)(_ :\: _)
 
   @scala.inline
   def sep(docs: TraversableLike[Doc, _]): Doc =
@@ -135,11 +135,11 @@ package object pp {
 
   @scala.inline
   def vcat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ ##:: _)
+    docs.foldRight(empty)(_ :|: _)
 
   @scala.inline
   def fillCat(docs: TraversableLike[Doc, _]): Doc =
-    docs.foldRight(empty)(_ \\:: _)
+    docs.foldRight(empty)(_ :\: _)
 
   @scala.inline
   def cat(docs: TraversableLike[Doc, _]): Doc =

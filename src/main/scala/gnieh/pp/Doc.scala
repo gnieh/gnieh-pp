@@ -39,33 +39,33 @@ sealed trait Doc {
 
   /** Equivalent to `that :: space :: this` */
   @scala.inline
-  def +::(that: Doc): Doc =
+  def :+:(that: Doc): Doc =
     withUnit(_ :: space :: this)(that)
 
   /** Equivalent to `that :: line :: this` */
   @scala.inline
-  def #::(that: Doc): Doc =
+  def :|:(that: Doc): Doc =
     withUnit(_ :: line :: this)(that)
 
   /** Equivalent to `that :: softline :: this` */
   @scala.inline
-  def \::(that: Doc): Doc =
+  def :\:(that: Doc): Doc =
     withUnit(_ :: softline :: this)(that)
 
   /** Equivalent to `that :: linebreak :: this` */
   @scala.inline
-  def ##::(that: Doc): Doc =
+  def :||:(that: Doc): Doc =
     withUnit(_ :: linebreak :: this)(that)
 
   /** Equivalent to `that :: softbreak :: this` */
   @scala.inline
-  def \\::(that: Doc): Doc =
+  def :\\:(that: Doc): Doc =
     withUnit(_ :: softbreak :: this)(that)
 
-  /** Equivalent to `align(this #:: that)` */
+  /** Equivalent to `align(this <:>: that)` */
   @scala.inline
   def $$(that: Doc) =
-    align(this #:: that)
+    align(this :|: that)
 
   private[pp] def render(width: Int, indent: Int, col: Int, inGroup: Boolean, newLine: Boolean): String
 
