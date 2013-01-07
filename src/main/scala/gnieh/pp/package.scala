@@ -66,7 +66,10 @@ package object pp {
 
   /** Renders the text as is. If it contains new lines, [[gnieh.pp.text]] should be used. */
   def text(s: String): Doc =
-    TextDoc(s)
+    if (s.isEmpty)
+      EmptyDoc
+    else
+      TextDoc(s)
 
   /** Concatenates all characters, using [[gnieh.pp.line]] for new lines and [gnieh.pp.char]] for other characters */
   def string(s: String): Doc =
@@ -81,9 +84,11 @@ package object pp {
   def words(s: String): List[Doc] =
     s.split("\\s+").map(text).toList
 
-  @scala.inline
   def char(c: Char): Doc =
-    TextDoc(c.toString)
+    if (c == '\n')
+      line
+    else
+      TextDoc(c.toString)
 
   @scala.inline
   def int(i: Int): Doc =
