@@ -182,37 +182,7 @@ package object pp {
   implicit def c2doc(c: Char) =
     char(c)
 
-  implicit def os2doc(o: Option[String]) = o match {
-    case Some(s) => s2doc(s)
-    case None    => empty
-  }
-
-  implicit def oi2doc(i: Option[Int]) = i match {
-    case Some(i) => int(i)
-    case None    => empty
-  }
-
-  implicit def ol2doc(l: Option[Long]) = l match {
-    case Some(l) => long(l)
-    case None    => empty
-  }
-
-  implicit def of2doc(f: Option[Float]) = f match {
-    case Some(f) => float(f)
-    case None    => empty
-  }
-
-  implicit def od2doc(d: Option[Double]) = d match {
-    case Some(d) => double(d)
-    case None    => empty
-  }
-
-  implicit def oc2doc(c: Option[Char]) = c match {
-    case Some(c) => char(c)
-    case None    => empty
-  }
-
-  implicit def odoc2doc(d: Option[Doc]) = d match {
+  implicit def opt2doc[T <% Doc](o: Option[T]): Doc = o match {
     case Some(d) => d
     case None    => empty
   }
