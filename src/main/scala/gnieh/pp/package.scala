@@ -71,14 +71,14 @@ package object pp {
     else
       TextDoc(s)
 
-  /** Concatenates all characters, using `line` for new lines and `char` for other characters */
+  /** Concatenates all characters, using `line` for new lines and `text` for other blocks */
   def string(s: String): Doc =
-    s.foldRight(empty) { (c, acc) =>
-      if (c == '\n')
-        line :: acc
-      else
-        char(c) :: acc
-    }
+    if (s.contains("\n"))
+      s.split("\n").foldRight(empty) { (word, doc) =>
+        text(word) :|: doc
+      }
+    else
+      text(s)
 
   /** Splits the string into words and create a document for each word */
   def words(s: String): List[Doc] =
@@ -158,11 +158,9 @@ package object pp {
   def cat(docs: TraversableLike[Doc, _]): Doc =
     group(vcat(docs))
 
+  @scala.inline
   implicit def s2doc(s: String) =
-    if (s.contains("\n"))
-      string(s)
-    else
-      text(s)
+    string(s)
 
   @scala.inline
   implicit def i2doc(i: Int) =
