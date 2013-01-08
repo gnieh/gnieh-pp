@@ -21,11 +21,9 @@ import org.scalatest._
 /** @author Lucas Satabin
  *
  */
-class ListCombinatorsTest extends FlatSpec with ShouldMatchers {
+class ListCombinatorsTest extends PpTest {
 
   val someText = words("text to lay out")
-
-  val render = (new PrettyRenderer(80)).andThen(_.layout)
 
   "vsep" should "vertically lay out documents" in {
     val test1 = "some" :+: vsep(someText)
