@@ -1,0 +1,918 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>pp - gnieh.pp</title>
+          <meta name="description" content="pp - gnieh.pp" />
+          <meta name="keywords" content="pp gnieh.pp" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'gnieh.pp.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="gnieh">gnieh</a></p>
+        <h1>pp</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pp</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Pretty-printer library</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="gnieh.pp"><span>pp</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="gnieh.pp.AlignDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AlignDocextendsDocwithProductwithSerializable"></a>
+      <a id="AlignDoc:AlignDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AlignDoc.html"><span class="name">AlignDoc</span></a><span class="params">(<span name="inner">inner: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Align document: aligns the document on the current column.</p>
+    </li><li name="gnieh.pp.ColumnDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnDocextendsDocwithProductwithSerializable"></a>
+      <a id="ColumnDoc:ColumnDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnDoc.html"><span class="name">ColumnDoc</span></a><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>) ⇒ <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Column document: creates a document depending on the current column.</p>
+    </li><li name="gnieh.pp.ConsDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConsDocextendsDocwithProductwithSerializable"></a>
+      <a id="ConsDoc:ConsDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ConsDoc.html"><span class="name">ConsDoc</span></a><span class="params">(<span name="first">first: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>, <span name="second">second: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Cons document: Concatenation of two documents.</p>
+    </li><li name="gnieh.pp.CountUnit" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CountUnitextendsObject"></a>
+      <a id="CountUnit:CountUnit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CountUnit.html"><span class="name">CountUnit</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="gnieh.pp.Doc" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DocextendsObject"></a>
+      <a id="Doc:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Doc.html"><span class="name">Doc</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A document that can then be laid out.</p>
+    </li><li name="gnieh.pp.LineDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LineDocextendsDocwithProductwithSerializable"></a>
+      <a id="LineDoc:LineDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LineDoc.html"><span class="name">LineDoc</span></a><span class="params">(<span name="break">break: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Line document: renders as a new line except if discarded by a group.</p>
+    </li><li name="gnieh.pp.NestDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NestDocextendsDocwithProductwithSerializable"></a>
+      <a id="NestDoc:NestDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NestDoc.html"><span class="name">NestDoc</span></a><span class="params">(<span name="indent">indent: <span class="extype" name="scala.Int">Int</span></span>, <span name="inner">inner: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Nest document: new lines are indented by the given indentation.</p>
+    </li><li name="gnieh.pp.PrettyRenderer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PrettyRendererextendsgnieh.pp.Doc=&gt;gnieh.pp.SimpleDoc"></a>
+      <a id="PrettyRenderer:PrettyRenderer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PrettyRenderer.html"><span class="name">PrettyRenderer</span></a><span class="result"> extends (<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>) ⇒ <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A pretty printer, that tries to make the document fit in the page width
+</p>
+    </li><li name="gnieh.pp.SLine" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SLineextendsSimpleDocwithProductwithSerializable"></a>
+      <a id="SLine:SLine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SLine.html"><span class="name">SLine</span></a><span class="params">(<span name="indent">indent: <span class="extype" name="scala.Int">Int</span></span>, <span name="next">next: <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>)</span><span class="result"> extends <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A new line document with the indentation level to print right after.</p>
+    </li><li name="gnieh.pp.SText" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="STextextendsSimpleDocwithProductwithSerializable"></a>
+      <a id="SText:SText"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SText.html"><span class="name">SText</span></a><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="next">next: <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>)</span><span class="result"> extends <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A text document.</p>
+    </li><li name="gnieh.pp.SimpleDoc" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SimpleDocextendsObject"></a>
+      <a id="SimpleDoc:SimpleDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleDoc.html"><span class="name">SimpleDoc</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simple document is the normalized form of a document.</p>
+    </li><li name="gnieh.pp.TextDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TextDocextendsDocwithProductwithSerializable"></a>
+      <a id="TextDoc:TextDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="TextDoc.html"><span class="name">TextDoc</span></a><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Text document: shall not contain any new lines.</p>
+    </li><li name="gnieh.pp.TruncateRenderer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TruncateRendererextendsgnieh.pp.Doc=&gt;gnieh.pp.SimpleDoc"></a>
+      <a id="TruncateRenderer:TruncateRenderer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="TruncateRenderer.html"><span class="name">TruncateRenderer</span></a><span class="result"> extends (<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>) ⇒ <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A renderer that truncates the result (once rendered by the inner renderer) with the given
+ limit.</p>
+    </li><li name="gnieh.pp.UnionDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnionDocextendsDocwithProductwithSerializable"></a>
+      <a id="UnionDoc:UnionDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UnionDoc.html"><span class="name">UnionDoc</span></a><span class="params">(<span name="long">long: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>, <span name="short">short: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Union document: two variations of the same document.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="gnieh.pp.Characters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Characters"></a>
+      <a id="Characters:Characters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Characters$.html"><span class="name">Characters</span></a><span class="result"> extends <a href="CountUnit.html" class="extype" name="gnieh.pp.CountUnit">CountUnit</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Truncates after the count in non space characters</p>
+    </li><li name="gnieh.pp.CompactRenderer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CompactRenderer"></a>
+      <a id="CompactRenderer:CompactRenderer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CompactRenderer$.html"><span class="name">CompactRenderer</span></a><span class="result"> extends (<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>) ⇒ <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This printer is not pretty (and thus faster): it does not insert any indentation, just renders everything compact
+</p>
+    </li><li name="gnieh.pp.EmptyDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EmptyDoc"></a>
+      <a id="EmptyDoc:EmptyDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="EmptyDoc$.html"><span class="name">EmptyDoc</span></a><span class="result"> extends <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Empty document.</p>
+    </li><li name="gnieh.pp.Lines" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Lines"></a>
+      <a id="Lines:Lines"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Lines$.html"><span class="name">Lines</span></a><span class="result"> extends <a href="CountUnit.html" class="extype" name="gnieh.pp.CountUnit">CountUnit</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Truncates after the count in lines</p>
+    </li><li name="gnieh.pp.SEmpty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SEmpty"></a>
+      <a id="SEmpty:SEmpty"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SEmpty$.html"><span class="name">SEmpty</span></a><span class="result"> extends <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An empty document.</p>
+    </li><li name="gnieh.pp.Words" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Words"></a>
+      <a id="Words:Words"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Words$.html"><span class="name">Words</span></a><span class="result"> extends <a href="CountUnit.html" class="extype" name="gnieh.pp.CountUnit">CountUnit</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Truncates after the count in words</p>
+    </li><li name="gnieh.pp.package#align" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="align(doc:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="align(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">align</span><span class="params">(<span name="doc">doc: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the document with nesting level set to the current column</p><div class="fullcomment"><div class="comment cmt"><p>Renders the document with nesting level set to the current column</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#c2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="c2doc(c:Char):gnieh.pp.Doc"></a>
+      <a id="c2doc(Char):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">c2doc</span><span class="params">(<span name="c">c: <span class="extype" name="scala.Char">Char</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#cat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cat(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="cat(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#char" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="char(c:Char):gnieh.pp.Doc"></a>
+      <a id="char(Char):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">char</span><span class="params">(<span name="c">c: <span class="extype" name="scala.Char">Char</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="gnieh.pp.package#d2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="d2doc(d:Double):gnieh.pp.Doc"></a>
+      <a id="d2doc(Double):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">d2doc</span><span class="params">(<span name="d">d: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#double" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="double(d:Double):gnieh.pp.Doc"></a>
+      <a id="double(Double):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">double</span><span class="params">(<span name="d">d: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#empty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="empty:gnieh.pp.Doc"></a>
+      <a id="empty:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">empty</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders as an empty string</p>
+    </li><li name="gnieh.pp.package#f2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="f2doc(f:Float):gnieh.pp.Doc"></a>
+      <a id="f2doc(Float):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">f2doc</span><span class="params">(<span name="f">f: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#fill" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fill(until:Int)(doc:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="fill(Int)(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fill</span><span class="params">(<span name="until">until: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="doc">doc: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the document as usual, and then fills until <code>width</code> with spaces if necessary</p><div class="fullcomment"><div class="comment cmt"><p>Renders the document as usual, and then fills until <code>width</code> with spaces if necessary</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#fillCat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fillCat(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="fillCat(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fillCat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#fillSep" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fillSep(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="fillSep(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fillSep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#float" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="float(f:Float):gnieh.pp.Doc"></a>
+      <a id="float(Float):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">float</span><span class="params">(<span name="f">f: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#group" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="group(doc:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="group(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">group</span><span class="params">(<span name="doc">doc: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Discards all line breaks in the given document if the result fits in the page, otherwise, renders without any changes</p><div class="fullcomment"><div class="comment cmt"><p>Discards all line breaks in the given document if the result fits in the page, otherwise, renders without any changes</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#hang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hang(indent:Int)(doc:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="hang(Int)(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hang</span><span class="params">(<span name="indent">indent: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="doc">doc: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the document with nesting level set to the current column plus <code>indent</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders the document with nesting level set to the current column plus <code>indent</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#hcat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hcat(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="hcat(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hcat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#hsep" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hsep(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="hsep(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hsep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#i2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="i2doc(i:Int):gnieh.pp.Doc"></a>
+      <a id="i2doc(Int):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">i2doc</span><span class="params">(<span name="i">i: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#int" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="int(i:Int):gnieh.pp.Doc"></a>
+      <a id="int(Int):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">int</span><span class="params">(<span name="i">i: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#l2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="l2doc(l:Long):gnieh.pp.Doc"></a>
+      <a id="l2doc(Long):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">l2doc</span><span class="params">(<span name="l">l: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#line" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="line:gnieh.pp.Doc"></a>
+      <a id="line:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">line</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders as a new line unless it is discarded by a group, in which case behaves like <code>space</code></p>
+    </li><li name="gnieh.pp.package#linebreak" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="linebreak:gnieh.pp.Doc"></a>
+      <a id="linebreak:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">linebreak</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders as a new line unless it is discarded by a group, in which case behaves like <code>empty</code></p>
+    </li><li name="gnieh.pp.package#long" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="long(l:Long):gnieh.pp.Doc"></a>
+      <a id="long(Long):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">long</span><span class="params">(<span name="l">l: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#nest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nest(indent:Int)(inner:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="nest(Int)(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nest</span><span class="params">(<span name="indent">indent: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="inner">inner: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Indents the document</p><div class="fullcomment"><div class="comment cmt"><p>Indents the document</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#opt2doc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="opt2doc[T](o:Option[T])(implicitevidence$1:T=&gt;gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="opt2doc[T](Option[T])((T)⇒Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">opt2doc</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="o">o: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="gnieh.pp.opt2doc.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: (<span class="extype" name="gnieh.pp.opt2doc.T">T</span>) ⇒ <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="gnieh.pp.package#s2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="s2doc(s:String):gnieh.pp.Doc"></a>
+      <a id="s2doc(String):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">s2doc</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#sep" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sep(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="sep(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#softbreak" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="softbreak:gnieh.pp.Doc"></a>
+      <a id="softbreak:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">softbreak</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Behaves like <code>empty</code> if the result fits in the page, otherwise behaves like <code>line</code></p>
+    </li><li name="gnieh.pp.package#softline" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="softline:gnieh.pp.Doc"></a>
+      <a id="softline:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">softline</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Behaves like <code>space</code> if the result fits in the page, otherwise behaves like <code>line</code></p>
+    </li><li name="gnieh.pp.package#space" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="space:gnieh.pp.Doc"></a>
+      <a id="space:Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">space</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders as a space</p>
+    </li><li name="gnieh.pp.package#string" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="string(s:String):gnieh.pp.Doc"></a>
+      <a id="string(String):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">string</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Concatenates all characters, using <code>line</code> for new lines and <code>text</code> for other blocks</p>
+    </li><li name="gnieh.pp.package#text" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="text(s:String):gnieh.pp.Doc"></a>
+      <a id="text(String):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">text</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the text as is.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the text as is. If it contains new lines, <code>text</code> should be used.</p></div></div>
+    </li><li name="gnieh.pp.package#vcat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vcat(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="vcat(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">vcat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#vsep" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vsep(docs:scala.collection.TraversableLike[gnieh.pp.Doc,_]):gnieh.pp.Doc"></a>
+      <a id="vsep(TraversableLike[Doc,_]):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">vsep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#width" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="width(f:Int=&gt;gnieh.pp.Doc)(doc:gnieh.pp.Doc):gnieh.pp.Doc"></a>
+      <a id="width((Int)⇒Doc)(Doc):Doc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">width</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Int">Int</span>) ⇒ <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="params">(<span name="doc">doc: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders a document followed by some other document computed depending on the current width</p><div class="fullcomment"><div class="comment cmt"><p>Renders a document followed by some other document computed depending on the current width</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="gnieh.pp.package#words" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="words(s:String):List[gnieh.pp.Doc]"></a>
+      <a id="words(String):List[Doc]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">words</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Splits the string into words and create a document for each word</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
