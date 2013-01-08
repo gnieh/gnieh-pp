@@ -15,6 +15,12 @@
  */
 package gnieh.pp
 
+/** A simple document is the normalized form of a document.
+ *
+ *  This is what is produced by the renderers depending on their rendering algorithm.
+ *
+ *  @author Lucas Satabin
+ */
 sealed trait SimpleDoc {
 
   def fits(width: Int): Boolean
@@ -25,6 +31,9 @@ sealed trait SimpleDoc {
 
 }
 
+/** An empty document.
+ *  @author Lucas Satabin
+ */
 case object SEmpty extends SimpleDoc {
   def fits(width: Int) =
     width >= 0 // always fits if there is enough place
@@ -34,6 +43,9 @@ case object SEmpty extends SimpleDoc {
 
 }
 
+/** A text document. Should never contain new lines
+ *  @author Lucas Satabin
+ */
 final case class SText(text: String, next: SimpleDoc) extends SimpleDoc {
   def fits(width: Int) =
     next.fits(width - text.length)
@@ -42,6 +54,10 @@ final case class SText(text: String, next: SimpleDoc) extends SimpleDoc {
     text + next.layout
 }
 
+/** A new line document with the indentation level to print right after.
+ *  If the next document is empty, the indentation is not printed.
+ *  @author Lucas Satabin
+ */
 final case class SLine(indent: Int, next: SimpleDoc) extends SimpleDoc {
   def fits(width: Int) =
     width >= 0 // always fits if there is enough place
