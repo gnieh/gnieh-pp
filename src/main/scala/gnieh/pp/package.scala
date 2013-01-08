@@ -113,8 +113,17 @@ package object pp {
 
   /** Renders the document as usual, and then fills until `width` with spaces if necessary */
   @scala.inline
-  def fill(width: Int)(doc: Doc): Doc =
-    FillDoc(width, doc)
+  def fill(until: Int)(doc: Doc): Doc =
+    width { w =>
+      if (w >= until)
+        empty
+      else
+        text(" " * (until - w))
+    }(doc)
+
+  @scala.inline
+  def width(f: Int => Doc)(doc: Doc): Doc =
+    ColumnDoc(column1 => doc :: ColumnDoc(column2 => f(column2 - column1)))
 
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =

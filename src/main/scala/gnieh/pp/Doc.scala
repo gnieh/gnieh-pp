@@ -112,7 +112,7 @@ final case class AlignDoc(inner: Doc) extends Doc {
     AlignDoc(inner.flatten)
 }
 
-final case class FillDoc(width: Int, inner: Doc) extends Doc {
+final case class ColumnDoc(f: Int => Doc) extends Doc {
   lazy val flatten =
-    FillDoc(width, inner.flatten)
+    ColumnDoc(f.andThen(_.flatten))
 }

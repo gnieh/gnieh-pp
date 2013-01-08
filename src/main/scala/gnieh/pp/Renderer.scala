@@ -46,8 +46,8 @@ class PrettyRenderer(width: Int) extends Renderer {
         best(width, column, (i, s) :: tail))
     case (i, AlignDoc(inner)) :: tail =>
       best(width, column, (column + i, inner) :: tail)
-    case (i, FillDoc(w, inner)) :: tail =>
-      best(width, column, (i, inner) :: (i, TextDoc(" " * w)) :: tail)
+    case (i, ColumnDoc(f)) :: tail =>
+      best(width, column, (i, f(column)) :: tail)
   }
 
   private def better(width: Int, column: Int, d1: SimpleDoc, d2: SimpleDoc): SimpleDoc =
@@ -73,7 +73,7 @@ object CompactRenderer extends Renderer {
       case NestDoc(j, doc)        => scan(column, doc :: docs)
       case UnionDoc(_, short)     => scan(column, short :: docs)
       case AlignDoc(inner)        => scan(column, inner :: docs)
-      case FillDoc(_, inner)      => scan(column, inner :: docs)
+      case ColumnDoc(f)           => scan(column, (f(column)) :: docs)
     }
   }
 
