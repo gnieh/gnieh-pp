@@ -44,15 +44,16 @@ class PrettyRenderer(width: Int) extends (Doc => SimpleDoc) {
         best(width, column, (i, l) :: tail),
         best(width, column, (i, s) :: tail))
     case (i, AlignDoc(inner)) :: tail =>
-      best(width, column, (column + i, inner) :: tail)
+      best(width, column, (column, inner) :: tail)
     case (i, ColumnDoc(f)) :: tail =>
       best(width, column, (i, f(column)) :: tail)
   }
 
-  private def better(width: Int, column: Int, d1: SimpleDoc, d2: SimpleDoc): SimpleDoc =
+  private def better(width: Int, column: Int, d1: SimpleDoc, d2: => SimpleDoc): SimpleDoc =
     if (d1.fits(width - column))
       d1
     else
+      // d2 is computed only if needed...
       d2
 
 }
@@ -78,6 +79,60 @@ object CompactRenderer extends (Doc => SimpleDoc) {
       case AlignDoc(inner)        => scan(column, inner :: docs)
       case ColumnDoc(f)           => scan(column, (f(column)) :: docs)
     }
+  }
+
+}
+
+sealed trait CountUnit
+/** Truncates after the count in non space characters */
+case object Characters extends CountUnit
+/** Truncates after the count in words */
+case object Words extends CountUnit
+/** Truncates after the count in lines */
+case object Lines extends CountUnit
+
+/** A renderer that truncates the result (once rendered by the inner renderer) with the given
+ *  limit. It makes the assumption that the following invariants are respected:
+ *   - a [[gnieh.pp.SText]] contains either only spaces or only a word
+ *   - indentation characters are all modeled with the indentation in [[gnieh.pp.SLine]]
+ *
+ *  @author Lucas Satabin
+ */
+class TruncateRenderer(max: Int, unit: CountUnit, inner: Doc => SimpleDoc) extends (Doc => SimpleDoc) {
+
+  def apply(doc: Doc) =
+    truncate(inner(doc))
+
+  def apply(doc: SimpleDoc) =
+    truncate(doc)
+
+  /** Truncates the simple document, depending on the constructor criterion. */
+  def truncate(doc: SimpleDoc): SimpleDoc = {
+    unit match {
+      case Lines      => firstLines(max, doc)
+      case Characters => firstChars(max, doc)
+      case Words      => firstWords(max, doc)
+    }
+  }
+
+  private def firstLines(maxLines: Int, doc: SimpleDoc): SimpleDoc = doc match {
+    case SText(text, next) if maxLines >= 1  => SText(text, firstLines(maxLines, next))
+    case SLine(indent, next) if maxLines > 1 => SLine(indent, firstLines(maxLines - 1, next))
+    case _                                   => SEmpty
+  }
+
+  private def firstChars(maxChars: Int, doc: SimpleDoc): SimpleDoc = doc match {
+    case SText(text, next) if maxChars >= text.replaceAll(" ", "").length => SText(text, firstChars(maxChars - text.length, next))
+    case SLine(indent, next) if maxChars > 0 => SLine(indent, firstChars(maxChars, next))
+    case _ => SEmpty
+  }
+
+  private def firstWords(maxWords: Int, doc: SimpleDoc): SimpleDoc = doc match {
+    case SText(text, next) if text.trim.isEmpty && maxWords > 0 => SText(text, firstWords(maxWords, next))
+    case SText(text, next) if maxWords > 0 => SText(text, firstWords(maxWords - 1, next))
+    case SLine(indent, next) if maxWords > 0 => SLine(indent, firstWords(maxWords, next))
+    case _ => SEmpty
+
   }
 
 }

@@ -9,7 +9,7 @@ object PpBuild extends Build {
     name := "gnieh-pp",
     version in ThisBuild := "0-1.SNAPSHOT",
     scalaVersion in ThisBuild := "2.10.0",
-    crossScalaVersions in ThisBuild := Seq("2.9.2", "2.10.0"),
+    crossScalaVersions in ThisBuild := Seq("2.10.0", "2.9.2"),
     libraryDependencies in ThisBuild ++= globalDependencies,
     compileOptions) settings(publishSettings: _*)
 

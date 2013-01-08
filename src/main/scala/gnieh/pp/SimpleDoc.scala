@@ -31,6 +31,12 @@ sealed trait SimpleDoc {
 
   def fold[T](zero: T)(f: (T, SimpleDoc) => T): T
 
+  def ::(that: SimpleDoc): SimpleDoc = that match {
+    case SEmpty           => this
+    case SText(text, _)   => SText(text, this)
+    case SLine(indent, _) => SLine(indent, this)
+  }
+
 }
 
 /** An empty document.
@@ -58,10 +64,8 @@ final case class SText(text: String, next: SimpleDoc) extends SimpleDoc {
   lazy val layout =
     text + next.layout
 
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T) = {
-    val z = f(zero, this)
-    next.fold(z)(f)
-  }
+  def fold[T](zero: T)(f: (T, SimpleDoc) => T) =
+    next.fold(f(zero, this))(f)
 
 }
 
@@ -79,8 +83,6 @@ final case class SLine(indent: Int, next: SimpleDoc) extends SimpleDoc {
     else
       "\n" + (" " * indent) + next.layout
 
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T) = {
-    val z = f(zero, this)
-    next.fold(z)(f)
-  }
+  def fold[T](zero: T)(f: (T, SimpleDoc) => T) =
+    next.fold(f(zero, this))(f)
 }
