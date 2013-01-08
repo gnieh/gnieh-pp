@@ -64,7 +64,7 @@ sealed trait Doc {
 
   /** Equivalent to `align(this :|: that)` */
   @scala.inline
-  def $$(that: Doc) =
+  def ||(that: Doc) =
     align(this :|: that)
 
   /** A flatten (no new lines) version of this document */
