@@ -30,21 +30,21 @@ package object pp {
   val space: Doc =
     TextDoc(" ")
 
-  /** Renders as a new line unless it is discarded by a group, in which case behaves like [[gnieh.pp.space]] */
+  /** Renders as a new line unless it is discarded by a group, in which case behaves like `space` */
   @scala.inline
   val line: Doc = LineDoc(false)
 
-  /** Renders as a new line unless it is discarded by a group, in which case behaves like [[gnieh.pp.empty]] */
+  /** Renders as a new line unless it is discarded by a group, in which case behaves like `empty` */
   @scala.inline
   val linebreak: Doc =
     LineDoc(true)
 
-  /** Behaves like [[gnieh.pp.space]] if the result fits in the page, otherwise behaves like [[gnieh.pp.line]] */
+  /** Behaves like `space` if the result fits in the page, otherwise behaves like `line` */
   @scala.inline
   val softline: Doc =
     group(line)
 
-  /** Behaves like [[gnieh.pp.empty]] if the result fits in the page, otherwise behaves like [[gnieh.pp.line]] */
+  /** Behaves like `empty` if the result fits in the page, otherwise behaves like `line` */
   @scala.inline
   val softbreak: Doc =
     group(linebreak)
@@ -64,14 +64,14 @@ package object pp {
   def hang(indent: Int)(doc: Doc): Doc =
     align(nest(indent)(doc))
 
-  /** Renders the text as is. If it contains new lines, [[gnieh.pp.text]] should be used. */
+  /** Renders the text as is. If it contains new lines, `text` should be used. */
   def text(s: String): Doc =
     if (s.isEmpty)
       EmptyDoc
     else
       TextDoc(s)
 
-  /** Concatenates all characters, using [[gnieh.pp.line]] for new lines and [gnieh.pp.char]] for other characters */
+  /** Concatenates all characters, using `line` for new lines and `char` for other characters */
   def string(s: String): Doc =
     s.foldRight(empty) { (c, acc) =>
       if (c == '\n')
