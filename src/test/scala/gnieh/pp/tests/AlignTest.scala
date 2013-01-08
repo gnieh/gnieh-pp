@@ -26,7 +26,7 @@ class AlignTest extends PpTest {
 
   "the align operator" should "align worlds on the current column" in {
 
-    render(doc1 :+: (doc2 || doc3)) should be("hi nice\n   world")
+    render80(doc1 :+: (doc2 || doc3)) should be("hi nice\n   world")
 
   }
 

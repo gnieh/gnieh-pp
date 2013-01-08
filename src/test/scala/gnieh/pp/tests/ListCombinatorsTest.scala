@@ -27,10 +27,10 @@ class ListCombinatorsTest extends PpTest {
 
   "vsep" should "vertically lay out documents" in {
     val test1 = "some" :+: vsep(someText)
-    render(test1) should be("some text\nto\nlay\nout")
+    render80(test1) should be("some text\nto\nlay\nout")
 
     val test2 = "some" :+: align(vsep(someText))
-    render(test2) should be("some text\n     to\n     lay\n     out")
+    render80(test2) should be("some text\n     to\n     lay\n     out")
   }
 
 }

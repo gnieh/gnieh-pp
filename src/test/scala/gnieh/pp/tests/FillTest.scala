@@ -23,15 +23,15 @@ class FillTest extends PpTest {
   val doc = string("some document")
 
   "a rendered document" should "be filled until filling width is reached" in {
-    render(fill(20)(doc)) should be("some document       ")
+    render80(fill(20)(doc)) should be("some document       ")
   }
 
   it should "not be filled if the width was already reached" in {
-    render(fill(5)(doc)) should be("some document")
+    render80(fill(5)(doc)) should be("some document")
   }
 
   it should "be filled even if there was indentation" in {
-    render(nest(3)("test" :|: fill(20)(doc))) should be("test\n   some document       ")
+    render80(nest(3)("test" :|: fill(20)(doc))) should be("test\n   some document       ")
   }
 
 }

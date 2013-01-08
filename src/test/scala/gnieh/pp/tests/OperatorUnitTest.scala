@@ -67,11 +67,11 @@ class OperatorUnitTest extends FlatSpec with ShouldMatchers {
   }
 
   it should """be a left unit element for :\\:""" in {
-    empty :\: doc1 should be(doc1)
+    empty :\\: doc1 should be(doc1)
   }
 
   it should """be a right unit element for :\\:""" in {
-    doc1 :\: empty should be(doc1)
+    doc1 :\\: empty should be(doc1)
   }
 
 }
