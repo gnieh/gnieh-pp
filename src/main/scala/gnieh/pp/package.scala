@@ -121,9 +121,10 @@ package object pp {
         text(" " * (until - w))
     }(doc)
 
+  /** Renders a document followed by some other document computed depending on the current width */
   @scala.inline
   def width(f: Int => Doc)(doc: Doc): Doc =
-    ColumnDoc(column1 => doc :: ColumnDoc(column2 => f(column2 - column1)))
+    ColumnDoc(start => doc :: ColumnDoc(end => f(end - start)))
 
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
@@ -217,7 +218,5 @@ package object pp {
     case Some(d) => d
     case None    => empty
   }
-
-  type Docs = List[(Int, Doc)]
 
 }

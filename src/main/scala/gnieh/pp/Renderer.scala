@@ -15,14 +15,13 @@
  */
 package gnieh.pp
 
-/** A document renderer takes a document and outputs the rendered result
+/** A pretty printer, that tries to make the document fit in the page width
  *
  *  @author Lucas Satabin
- *
  */
-trait Renderer extends (Doc => SimpleDoc)
+class PrettyRenderer(width: Int) extends (Doc => SimpleDoc) {
 
-class PrettyRenderer(width: Int) extends Renderer {
+  private type Docs = List[(Int, Doc)]
 
   def apply(doc: Doc) =
     best(width, 0, List((0, doc)))
@@ -58,7 +57,11 @@ class PrettyRenderer(width: Int) extends Renderer {
 
 }
 
-object CompactRenderer extends Renderer {
+/** This printer is not pretty (and thus faster): it does not insert any indentation, just renders everything compact
+ *
+ *  @author Lucas Satabin
+ */
+object CompactRenderer extends (Doc => SimpleDoc) {
 
   def apply(doc: Doc) =
     scan(0, List(doc))
