@@ -29,14 +29,6 @@ sealed trait SimpleDoc {
 
   override def toString = layout
 
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T): T
-
-  def ::(that: SimpleDoc): SimpleDoc = that match {
-    case SEmpty           => this
-    case SText(text, _)   => SText(text, this)
-    case SLine(indent, _) => SLine(indent, this)
-  }
-
 }
 
 /** An empty document.
@@ -48,10 +40,6 @@ case object SEmpty extends SimpleDoc {
 
   val layout =
     ""
-
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T) =
-    f(zero, this)
-
 }
 
 /** A text document. Should never contain new lines
@@ -63,10 +51,6 @@ final case class SText(text: String, next: SimpleDoc) extends SimpleDoc {
 
   lazy val layout =
     text + next.layout
-
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T) =
-    next.fold(f(zero, this))(f)
-
 }
 
 /** A new line document with the indentation level to print right after.
@@ -82,7 +66,4 @@ final case class SLine(indent: Int, next: SimpleDoc) extends SimpleDoc {
       ""
     else
       "\n" + (" " * indent) + next.layout
-
-  def fold[T](zero: T)(f: (T, SimpleDoc) => T) =
-    next.fold(f(zero, this))(f)
 }
