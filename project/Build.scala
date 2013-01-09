@@ -8,7 +8,7 @@ object PpBuild extends Build {
     organization in ThisBuild := "org.gnieh",
     name := "gnieh-pp",
     description := "A simple yet powerful pretty-printing library for Scala",
-    version in ThisBuild := "0.1-SNAPSHOT",
+    version in ThisBuild := "0.1",
     licenses := Seq("The Apache Software License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
     scalaVersion in ThisBuild := "2.10.0",
     crossScalaVersions in ThisBuild := Seq("2.10.0", "2.9.2"),
@@ -40,11 +40,12 @@ object PpBuild extends Build {
     },
     pomIncludeRepository in ThisBuild := { x => false },
     pomExtra in ThisBuild := (
+      <url>https://github.com/gnieh/gnieh-pp</url>
       <scm>
         <url>https://github.com/gnieh/gnieh-pp</url>
         <connection>scm:git:git://github.com/gnieh/gnieh-pp.git</connection>
         <developerConnection>scm:git:git@github.com:gnieh/gnieh-pp.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>0.1</tag>
       </scm>
       <developers>
         <developer>
@@ -57,10 +58,6 @@ object PpBuild extends Build {
         <system>travis</system>
         <url>https://travis-ci.org/#!/gnieh/gnieh-pp</url>
       </ciManagement>
-      <organization>
-        <name>gnieh.org</name>
-        <url>https://github.com/gnieh</url>
-      </organization>
       <issueManagement>
         <system>github</system>
         <url>https://github.com/gnieh/gnieh-pp/issues</url>
