@@ -13,22 +13,22 @@ Let's say you want to render some Scala code, formatted in several ways. For exa
 After building your code document, you end up with this:
 ```scala
 val myDoc = "def" :+: "invert" :: group("(" :: align("toInvert:" :+: "Int," :|:
-  "shouldI:" :+: "Boolean" :: ")")) :+: nest(2)("=" :|:
-    group(nest(2)("if" :+: "(shouldI)" :|: "toInvert") :|:
+  "really:" :+: "Boolean" :: ")")) :+: nest(2)("=" :|:
+    group(nest(2)("if" :+: "(really)" :|: "toInvert") :|:
     nest(2)("else" :|: "-toInvert")))
 ```
 
 you can render it on 80 columns with proper indentation, which will produce the following output:
 ```
-def invert(toInvert: Int, shouldI: Boolean) =
-  if (shouldI) toInvert else -toInvert
+def invert(toInvert: Int, really: Boolean) =
+  if (really) toInvert else -toInvert
 ```
 
 but you can decide to render it on 10 columns still with proper indentation, which produces:
 ```
 def invert(toInvert: Int,
-           shouldI: Boolean) =
-  if (shouldI)
+           really: Boolean) =
+  if (really)
     toInvert
   else
     -toInvert
@@ -39,8 +39,8 @@ Nice, isnt't it?
 another option is to discard indentation and groups, which produces some valid Scala code, yet harder to read for people:
 ```
 def invert(toInvert: Int,
-shouldI: Boolean) =
-if (shouldI)
+really: Boolean) =
+if (really)
 toInvert
 else
 -toInvert
@@ -58,6 +58,8 @@ import gnieh.pp._
 
 It gives you access to all constructors and userful implicit conversions, as well as to the renderers
 
+### Constructors
+
 There are some base constructors:
  - `empty`is the empty document, left and right unit for all operators,
  - `line` is a new line that can be discarded by a group. In this case it acts as `space`,
@@ -72,6 +74,10 @@ There are some base constructors:
  - `nest(indent)(doc)` add `indent` spaces at the beginning of each new line in `doc`,
  - see scaladoc for other constructors...
 
+Of course one can add his own constructors, which are expressed in terms of other constructors and operators
+
+### Operators
+
 There are then 5 primary operators:
  - `doc1 :: doc2` concatenates both documents
  - `doc1 :|: doc2` is equivalent to `doc1 :: line :: doc2`
@@ -79,7 +85,9 @@ There are then 5 primary operators:
  - `doc1 :\: doc2` is equivalent to `doc1 :: softline :: doc2`
  - `doc1 :\\: doc2` is equivalent to `doc1 :: softbreak :: doc2`
 
-There are 3 default renderers:
+### Renderers
+
+There are 3 default renderers whose job is to format your document following some criterion:
  - `new PrettyRenderer(width)` is a pretty-printer with the column width set to `width`,
  - `CompactRenderer` discards all groups and indentation,
  - `new TruncateRenderer(max, unit, innerRenderer)` is a renderer that truncates the document after rendering by `innerRenderer` after the `max` is reached. `max` can be in
@@ -92,4 +100,4 @@ Renderers are simply functions from `Doc` to `SimpleDoc`. A `SimpleDoc` is the r
 Documentation
 -------------
 
-You can find the API documentation and all operators on document in the [generated](http://gnieh.github.com/gnieh-pp/api/#package)
+You can find the API documentation and all operators on document in the [generated scaladoc](http://gnieh.github.com/gnieh-pp/api/#package)

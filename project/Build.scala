@@ -7,7 +7,9 @@ object PpBuild extends Build {
     base = file(".")) settings (
     organization in ThisBuild := "org.gnieh",
     name := "gnieh-pp",
-    version in ThisBuild := "0-1.SNAPSHOT",
+    description := "A simple yet powerful pretty-printing library for Scala",
+    version in ThisBuild := "0.1-SNAPSHOT",
+    licenses := Seq("The Apache Software License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
     scalaVersion in ThisBuild := "2.10.0",
     crossScalaVersions in ThisBuild := Seq("2.10.0", "2.9.2"),
     libraryDependencies in ThisBuild ++= globalDependencies,
@@ -38,13 +40,6 @@ object PpBuild extends Build {
     },
     pomIncludeRepository in ThisBuild := { x => false },
     pomExtra in ThisBuild := (
-      <licenses>
-        <license>
-          <name>The Apache Software License, Version 2.0</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-          <distribution>repo</distribution>
-        </license>
-      </licenses>
       <scm>
         <url>https://github.com/gnieh/gnieh-pp</url>
         <connection>scm:git:git://github.com/gnieh/gnieh-pp.git</connection>
