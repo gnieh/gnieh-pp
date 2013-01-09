@@ -5,6 +5,35 @@ Pretty Printer library based on the well-known Philip Wadler's "Prettier Printer
 
 The API was inspired by the Haskell [`Text.PrettyPrint.Leijen`](http://hackage.haskell.org/packages/archive/wl-pprint/1.0/doc/html/Text-PrettyPrint-Leijen.html) module.
 
+Installation
+------------
+
+`gnieh-pp` is published in the Maven Central Repository, so you can simply add it to your sbt project by using:
+```scala
+"org.gnieh" %% "gnieh-pp" % "0.1"
+```
+It is currently compiled for Scala 2.9.2 and 2.10
+
+If you are using maven with Scala 2.9.*, add this dependency:
+```xml
+<dependency>
+  <groupId>org.gnieh</groupId>
+  <artifactId>gnieh-pp_2.9.2</artifactId>
+  <version>0.1</version>
+  <type>pom</type>
+</dependency>
+```
+
+If you are using maven with Scala 2.10.*, add this dependency:
+```xml
+<dependency>
+  <groupId>org.gnieh</groupId>
+  <artifactId>gnieh-pp_2.10</artifactId>
+  <version>0.1</version>
+  <type>pom</type>
+</dependency>
+```
+
 Example
 -------
 
