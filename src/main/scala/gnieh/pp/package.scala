@@ -17,7 +17,7 @@ package gnieh
 
 import scala.collection.TraversableLike
 
-/** Pretty-printer library */
+/** Pretty-printer library based on the Wadler's paper "A Prettier Printer". */
 package object pp {
 
   /** Indents the document */
@@ -84,24 +84,29 @@ package object pp {
   def words(s: String): List[Doc] =
     s.split("\\s+").map(text).toList
 
+  /** Creates a document from the given character */
   def char(c: Char): Doc =
     if (c == '\n')
       line
     else
       TextDoc(c.toString)
 
+  /** Creates a document from the given integer */
   @scala.inline
   def int(i: Int): Doc =
     TextDoc(i.toString)
 
+  /** Creates a document from the given long */
   @scala.inline
   def long(l: Long): Doc =
     TextDoc(l.toString)
 
+  /** Creates a document from the given float */
   @scala.inline
   def float(f: Float): Doc =
     TextDoc(f.toString)
 
+  /** Creates a document from the given double */
   @scala.inline
   def double(d: Double): Doc =
     TextDoc(d.toString)
@@ -126,34 +131,42 @@ package object pp {
   def width(f: Int => Doc)(doc: Doc): Doc =
     ColumnDoc(start => doc :: ColumnDoc(end => f(end - start)))
 
+  /** Renders a document in which all documents in the collection are appended horizontally, separated by a `space` */
   @scala.inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :+: _)
 
+  /** Renders a document in which all documents in the collection are appended vertically, separated by a `line` */
   @scala.inline
   def vsep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :|: _)
 
+  /** Renders a document in which all documents in the collection are appended vertically, separated by a `softline` */
   @scala.inline
   def fillSep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :\: _)
 
+  /** Renders a document that tries to append the documents in the collection horizontally separated by a  `space` if it fits, otherwise append them vertically */
   @scala.inline
   def sep(docs: TraversableLike[Doc, _]): Doc =
     group(vsep(docs))
 
+  /** Renders a document that appends the document in the collection horizontally */
   @scala.inline
   def hcat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :: _)
 
+  /** Renders a document that appends all documents in the collection vertically, separated by a `linebreak` */
   @scala.inline
   def vcat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :||: _)
 
+  /** Renders a document that appends all document in the collection horizontally, separated by a `softbreak` */
   @scala.inline
   def fillCat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :\\: _)
 
+  /** Renders a document that trie to append the documents in the collection horizontally, otherwise append them vertically */
   @scala.inline
   def cat(docs: TraversableLike[Doc, _]): Doc =
     group(vcat(docs))

@@ -58,7 +58,8 @@ class PrettyRenderer(width: Int) extends (Doc => SimpleDoc) {
 
 }
 
-/** This printer is not pretty (and thus faster): it does not insert any indentation, just renders everything compact
+/** This printer is not really pretty (but should be faster than pretty printers!):
+ *  it does not insert any indentation and discards all groups, just renders everything as compact as possible
  *
  *  @author Lucas Satabin
  */
