@@ -44,7 +44,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Pretty-printer library</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Pretty-printer library based on the Wadler's paper &quot;A Prettier Printer&quot;.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -302,7 +302,8 @@
         <a href="CompactRenderer$.html"><span class="name">CompactRenderer</span></a><span class="result"> extends (<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>) ⇒ <a href="SimpleDoc.html" class="extype" name="gnieh.pp.SimpleDoc">SimpleDoc</a></span>
       </span>
       </h4>
-      <p class="comment cmt">This printer is not pretty (and thus faster): it does not insert any indentation, just renders everything compact
+      <p class="comment cmt">This printer is not really pretty (but should be faster than pretty printers!):
+ it does not insert any indentation and discards all groups, just renders everything as compact as possible
 </p>
     </li><li name="gnieh.pp.EmptyDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EmptyDoc"></a>
@@ -400,7 +401,7 @@
         <span class="name">cat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document that trie to append the documents in the collection horizontally, otherwise append them vertically</p><div class="fullcomment"><div class="comment cmt"><p>Renders a document that trie to append the documents in the collection horizontally, otherwise append them vertically</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -416,7 +417,7 @@
         <span class="name">char</span><span class="params">(<span name="c">c: <span class="extype" name="scala.Char">Char</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Creates a document from the given character</p>
     </li><li name="gnieh.pp.package#d2doc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="d2doc(d:Double):gnieh.pp.Doc"></a>
       <a id="d2doc(Double):Doc"></a>
@@ -445,7 +446,7 @@
         <span class="name">double</span><span class="params">(<span name="d">d: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Creates a document from the given double</p><div class="fullcomment"><div class="comment cmt"><p>Creates a document from the given double</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -506,7 +507,7 @@
         <span class="name">fillCat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document that appends all document in the collection horizontally, separated by a <code>softbreak</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders a document that appends all document in the collection horizontally, separated by a <code>softbreak</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -522,7 +523,7 @@
         <span class="name">fillSep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document in which all documents in the collection are appended vertically, separated by a <code>softline</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders a document in which all documents in the collection are appended vertically, separated by a <code>softline</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -538,7 +539,7 @@
         <span class="name">float</span><span class="params">(<span name="f">f: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Creates a document from the given float</p><div class="fullcomment"><div class="comment cmt"><p>Creates a document from the given float</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -586,7 +587,7 @@
         <span class="name">hcat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document that appends the document in the collection horizontally</p><div class="fullcomment"><div class="comment cmt"><p>Renders a document that appends the document in the collection horizontally</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -602,7 +603,7 @@
         <span class="name">hsep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document in which all documents in the collection are appended horizontally, separated by a <code>space</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders a document in which all documents in the collection are appended horizontally, separated by a <code>space</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -634,7 +635,7 @@
         <span class="name">int</span><span class="params">(<span name="i">i: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Creates a document from the given integer</p><div class="fullcomment"><div class="comment cmt"><p>Creates a document from the given integer</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -692,7 +693,7 @@
         <span class="name">long</span><span class="params">(<span name="l">l: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Creates a document from the given long</p><div class="fullcomment"><div class="comment cmt"><p>Creates a document from the given long</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -753,7 +754,7 @@
         <span class="name">sep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document that tries to append the documents in the collection horizontally separated by a  <code>space</code> if it fits, otherwise append them vertically</p><div class="fullcomment"><div class="comment cmt"><p>Renders a document that tries to append the documents in the collection horizontally separated by a  <code>space</code> if it fits, otherwise append them vertically</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -834,7 +835,7 @@
         <span class="name">vcat</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document that appends all documents in the collection vertically, separated by a <code>linebreak</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders a document that appends all documents in the collection vertically, separated by a <code>linebreak</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -850,7 +851,7 @@
         <span class="name">vsep</span><span class="params">(<span name="docs">docs: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a>, _]</span>)</span><span class="result">: <a href="Doc.html" class="extype" name="gnieh.pp.Doc">Doc</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Renders a document in which all documents in the collection are appended vertically, separated by a <code>line</code></p><div class="fullcomment"><div class="comment cmt"><p>Renders a document in which all documents in the collection are appended vertically, separated by a <code>line</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
