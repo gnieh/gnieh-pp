@@ -21,46 +21,46 @@ import scala.collection.TraversableLike
 package object pp {
 
   /** Indents the document */
-  @scala.inline
+  @inline
   def nest(indent: Int)(inner: Doc): Doc =
     NestDoc(indent, inner)
 
   /** Renders as a space */
-  @scala.inline
+  @inline
   val space: Doc =
     TextDoc(" ")
 
   /** Renders as a new line unless it is discarded by a group, in which case behaves like `space` */
-  @scala.inline
+  @inline
   val line: Doc = LineDoc(false)
 
   /** Renders as a new line unless it is discarded by a group, in which case behaves like `empty` */
-  @scala.inline
+  @inline
   val linebreak: Doc =
     LineDoc(true)
 
   /** Behaves like `space` if the result fits in the page, otherwise behaves like `line` */
-  @scala.inline
+  @inline
   val softline: Doc =
     group(line)
 
   /** Behaves like `empty` if the result fits in the page, otherwise behaves like `line` */
-  @scala.inline
+  @inline
   val softbreak: Doc =
     group(linebreak)
 
   /** Renders as an empty string */
-  @scala.inline
+  @inline
   val empty: Doc =
     EmptyDoc
 
   /** Renders the document with nesting level set to the current column */
-  @scala.inline
+  @inline
   def align(doc: Doc): Doc =
     AlignDoc(doc)
 
   /** Renders the document with nesting level set to the current column plus `indent` */
-  @scala.inline
+  @inline
   def hang(indent: Int)(doc: Doc): Doc =
     align(nest(indent)(doc))
 
@@ -92,32 +92,32 @@ package object pp {
       TextDoc(c.toString)
 
   /** Creates a document from the given integer */
-  @scala.inline
+  @inline
   def int(i: Int): Doc =
     TextDoc(i.toString)
 
   /** Creates a document from the given long */
-  @scala.inline
+  @inline
   def long(l: Long): Doc =
     TextDoc(l.toString)
 
   /** Creates a document from the given float */
-  @scala.inline
+  @inline
   def float(f: Float): Doc =
     TextDoc(f.toString)
 
   /** Creates a document from the given double */
-  @scala.inline
+  @inline
   def double(d: Double): Doc =
     TextDoc(d.toString)
 
   /** Discards all line breaks in the given document if the result fits in the page, otherwise, renders without any changes */
-  @scala.inline
+  @inline
   def group(doc: Doc): Doc =
     UnionDoc(doc.flatten, doc)
 
   /** Renders the document as usual, and then fills until `width` with spaces if necessary */
-  @scala.inline
+  @inline
   def fill(until: Int)(doc: Doc): Doc =
     width { w =>
       if (w >= until)
@@ -127,71 +127,71 @@ package object pp {
     }(doc)
 
   /** Renders a document followed by some other document computed depending on the current width */
-  @scala.inline
+  @inline
   def width(f: Int => Doc)(doc: Doc): Doc =
     ColumnDoc(start => doc :: ColumnDoc(end => f(end - start)))
 
   /** Renders a document in which all documents in the collection are appended horizontally, separated by a `space` */
-  @scala.inline
+  @inline
   def hsep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :+: _)
 
   /** Renders a document in which all documents in the collection are appended vertically, separated by a `line` */
-  @scala.inline
+  @inline
   def vsep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :|: _)
 
   /** Renders a document in which all documents in the collection are appended vertically, separated by a `softline` */
-  @scala.inline
+  @inline
   def fillSep(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :\: _)
 
   /** Renders a document that tries to append the documents in the collection horizontally separated by a  `space` if it fits, otherwise append them vertically */
-  @scala.inline
+  @inline
   def sep(docs: TraversableLike[Doc, _]): Doc =
     group(vsep(docs))
 
   /** Renders a document that appends the document in the collection horizontally */
-  @scala.inline
+  @inline
   def hcat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :: _)
 
   /** Renders a document that appends all documents in the collection vertically, separated by a `linebreak` */
-  @scala.inline
+  @inline
   def vcat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :||: _)
 
   /** Renders a document that appends all document in the collection horizontally, separated by a `softbreak` */
-  @scala.inline
+  @inline
   def fillCat(docs: TraversableLike[Doc, _]): Doc =
     docs.foldRight(empty)(_ :\\: _)
 
   /** Renders a document that trie to append the documents in the collection horizontally, otherwise append them vertically */
-  @scala.inline
+  @inline
   def cat(docs: TraversableLike[Doc, _]): Doc =
     group(vcat(docs))
 
-  @scala.inline
+  @inline
   implicit def s2doc(s: String) =
     string(s)
 
-  @scala.inline
+  @inline
   implicit def i2doc(i: Int) =
     int(i)
 
-  @scala.inline
+  @inline
   implicit def l2doc(l: Long) =
     long(l)
 
-  @scala.inline
+  @inline
   implicit def f2doc(f: Float) =
     float(f)
 
-  @scala.inline
+  @inline
   implicit def d2doc(d: Double) =
     double(d)
 
-  @scala.inline
+  @inline
   implicit def c2doc(c: Char) =
     char(c)
 

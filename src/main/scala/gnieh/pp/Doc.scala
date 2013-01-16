@@ -33,37 +33,37 @@ sealed trait Doc {
   /** Concatenates two documents.
    *  Is left associative with [[gnieh.pp.empty]] as left and right unit.
    */
-  @scala.inline
+  @inline
   def ::(that: Doc): Doc =
     withUnit(ConsDoc(_, this))(that)
 
   /** Equivalent to `that :: space :: this` */
-  @scala.inline
+  @inline
   def :+:(that: Doc): Doc =
     withUnit(_ :: space :: this)(that)
 
   /** Equivalent to `that :: line :: this` */
-  @scala.inline
+  @inline
   def :|:(that: Doc): Doc =
     withUnit(_ :: line :: this)(that)
 
   /** Equivalent to `that :: softline :: this` */
-  @scala.inline
+  @inline
   def :\:(that: Doc): Doc =
     withUnit(_ :: softline :: this)(that)
 
   /** Equivalent to `that :: linebreak :: this` */
-  @scala.inline
+  @inline
   def :||:(that: Doc): Doc =
     withUnit(_ :: linebreak :: this)(that)
 
   /** Equivalent to `that :: softbreak :: this` */
-  @scala.inline
+  @inline
   def :\\:(that: Doc): Doc =
     withUnit(_ :: softbreak :: this)(that)
 
   /** Equivalent to `align(this :|: that)` */
-  @scala.inline
+  @inline
   def ||(that: Doc) =
     align(this :|: that)
 
