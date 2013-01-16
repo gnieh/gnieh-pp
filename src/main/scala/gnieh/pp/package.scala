@@ -64,7 +64,7 @@ package object pp {
   def hang(indent: Int)(doc: Doc): Doc =
     align(nest(indent)(doc))
 
-  /** Renders the text as is. If it contains new lines, `text` should be used. */
+  /** Renders the text as is. If it contains new lines, `string` should be used. */
   def text(s: String): Doc =
     if (s.isEmpty)
       EmptyDoc
