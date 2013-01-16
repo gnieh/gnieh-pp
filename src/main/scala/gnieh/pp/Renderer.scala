@@ -73,10 +73,10 @@ object CompactRenderer extends (Doc => SimpleDoc) {
     case doc :: docs => doc match {
       case EmptyDoc               => SEmpty
       case TextDoc(text)          => SText(text, scan(column + text.length, docs))
-      case LineDoc(_)             => SLine(0, scan(0, docs))
+      case LineDoc(_)             => scan(column, doc.flatten :: docs)
       case ConsDoc(first, second) => scan(column, first :: second :: docs)
       case NestDoc(j, doc)        => scan(column, doc :: docs)
-      case UnionDoc(_, short)     => scan(column, short :: docs)
+      case UnionDoc(long, _)      => scan(column, long :: docs)
       case AlignDoc(inner)        => scan(column, inner :: docs)
       case ColumnDoc(f)           => scan(column, (f(column)) :: docs)
     }
