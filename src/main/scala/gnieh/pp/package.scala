@@ -32,12 +32,12 @@ package object pp {
 
   /** Renders as a new line unless it is discarded by a group, in which case behaves like `space` */
   @inline
-  val line: Doc = LineDoc(false)
+  val line: Doc = LineDoc(TextDoc(" "))
 
   /** Renders as a new line unless it is discarded by a group, in which case behaves like `empty` */
   @inline
   val linebreak: Doc =
-    LineDoc(true)
+    LineDoc(EmptyDoc)
 
   /** Behaves like `space` if the result fits in the page, otherwise behaves like `line` */
   @inline
@@ -48,6 +48,11 @@ package object pp {
   @inline
   val softbreak: Doc =
     group(linebreak)
+
+  /** Behaves like a new line unless it is discarded by a group, in which case, behaves like the replacement document */
+  @inline
+  def lineOr(replacement: => Doc): Doc =
+    LineDoc(replacement)
 
   /** Renders as an empty string */
   @inline

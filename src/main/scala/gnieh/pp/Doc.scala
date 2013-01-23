@@ -108,13 +108,9 @@ final case class TextDoc(text: String) extends Doc {
 /** Line document: renders as a new line except if discarded by a group.
  *  @author Lucas Satabin
  */
-final case class LineDoc(break: Boolean) extends Doc {
+final case class LineDoc(repl: Doc) extends Doc {
   lazy val flatten =
-    if (break) {
-      TextDoc("")
-    } else {
-      TextDoc(" ")
-    }
+    repl
 }
 
 /** Cons document: Concatenation of two documents.

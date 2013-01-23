@@ -11,4 +11,6 @@ abstract class PpTest extends FlatSpec with ShouldMatchers {
 
   val render20 = (new PrettyRenderer(20)).andThen(_.layout)
 
+  val render10 = (new PrettyRenderer(10)).andThen(_.layout)
+
 }
