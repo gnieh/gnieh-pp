@@ -25,6 +25,11 @@ package object pp {
   def nest(indent: Int)(inner: Doc): Doc =
     NestDoc(indent, inner)
 
+  /* Deindent the document */
+  @inline
+  def unnest(indent: Int)(inner: Doc): Doc =
+    nest(-indent)(inner)
+
   /** Renders as a space */
   @inline
   val space: Doc =
