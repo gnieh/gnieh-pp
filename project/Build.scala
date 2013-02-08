@@ -16,7 +16,7 @@ object PpBuild extends Build {
     compileOptions) settings(publishSettings: _*)
 
   lazy val globalDependencies = Seq(
-    "org.scalatest" %% "scalatest" % "2.0.M5b" % "test" cross CrossVersion.binaryMapped {
+    "org.scalatest" %% "scalatest" % "2.0.M5" % "test" cross CrossVersion.binaryMapped {
       case "2.9.2" => "2.9.0"
       case v => v
     }
