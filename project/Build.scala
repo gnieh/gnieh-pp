@@ -8,26 +8,19 @@ object PpBuild extends Build {
     organization in ThisBuild := "org.gnieh",
     name := "gnieh-pp",
     description := "A simple yet powerful pretty-printing library for Scala",
-    version in ThisBuild := "0.1",
+    version in ThisBuild := "0.2-SNAPSHOT",
     licenses := Seq("The Apache Software License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-    scalaVersion in ThisBuild := "2.10.0",
-    crossScalaVersions in ThisBuild := Seq("2.10.0", "2.9.2"),
+    scalaVersion in ThisBuild := "2.11.0",
+    crossScalaVersions in ThisBuild := Seq("2.10.4", "2.11.0"),
     libraryDependencies in ThisBuild ++= globalDependencies,
     compileOptions) settings(publishSettings: _*)
 
   lazy val globalDependencies = Seq(
-    "org.scalatest" %% "scalatest" % "2.0.M5" % "test" cross CrossVersion.binaryMapped {
-      case "2.9.2" => "2.9.0"
-      case v => v
-    }
+    "org.scalatest" %% "scalatest" % "2.1.5" % "test"
   )
 
-  lazy val compileOptions = scalacOptions in ThisBuild <++= scalaVersion map { v =>
-    if(v.startsWith("2.10"))
+  lazy val compileOptions = scalacOptions in ThisBuild ++=
       Seq("-deprecation", "-language:implicitConversions", "-feature")
-    else
-      Seq("-deprecation")
-  }
 
   lazy val publishSettings = Seq(
     publishMavenStyle in ThisBuild := true,
